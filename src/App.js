@@ -1,11 +1,21 @@
-import React from "react";
-
+import React from 'react';
+import { Switch } from "react-router-dom";
+import AppRoute from "./routes/AppRoute";
+import routes from "./routes/routes";
 
 function App() {
 	return (
-		<div className="App">
-			App
-		</div>
+		<>
+			<div className="App">
+				<Switch>
+					{routes.map(route => {
+						return (
+							<AppRoute key={route.path} path={route.path} component={route.component} />
+						)
+					})}
+				</Switch>
+			</div>
+		</>
 	);
 }
 
