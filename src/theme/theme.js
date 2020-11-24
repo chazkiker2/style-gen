@@ -30,16 +30,46 @@ const buildThemePallette = (arr) => {
 		--tLighter: ${hex[4]};
 		${'' /* transition: all 0.4s linear; */}
 	`;
-}
+};
 
-const darkArr = ["000000", "080708", "242525", "404342", "5c615f", "787e7c", "999f9d"];
-const lightArr = ["9ba1a8", "b9c0c7", "ced4da", "e0e4e8", "e9ecef", "f1f3f5", "f8f9fa"];
-const themeArr = ["af0b14", "be1c1f", "da3c33", "ee5c4b", "f57463"];
+const generalRules = css`
+	font-family: 'PT Sans', sans-serif;
+`;
+
+const darkArr = [
+	"000000",
+	"080708",
+	"242525",
+	"404342",
+	"5c615f",
+	"787e7c",
+	"999f9d"
+];
+
+const lightArr = [
+	"9ba1a8",
+	"b9c0c7",
+	"ced4da",
+	"e0e4e8",
+	"e9ecef",
+	"f1f3f5",
+	"f8f9fa"
+];
+// const themeArr = ["af0b14", "be1c1f", "da3c33", "ee5c4b", "f57463"];
+const themeArr2 = [
+	"004578",
+	"005A9E",
+	"0078D4",
+	"C7E0F4",
+	"DEECF9"
+];
+
 const darkPrimary = buildPrimaryPallette(darkArr);
 const lightPrimary = buildPrimaryPallette(lightArr);
-const themeColors = buildThemePallette(themeArr);
+const themeColors = buildThemePallette(themeArr2);
 export const rootVars = theme("mode", {
 	dark: css`
+		${generalRules};
 			${darkPrimary};
 			${themeColors};
 			--pText: #ffffff;
@@ -61,6 +91,7 @@ export const rootVars = theme("mode", {
 			} */}
 	`,
 	light: css`
+	${generalRules};
 			${lightPrimary};
 			${themeColors};
 			--pText: #000000;

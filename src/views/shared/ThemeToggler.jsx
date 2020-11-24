@@ -1,40 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "styled-theming";
 import { useTheme } from "../../theme/ThemeContext";
-import layout from "../layout";
-import moonDark from "../../assets/moonFilled.svg";
-import moonLight from "../../assets/moon.svg";
-
-const { buildClicker } = layout;
-
-const buttonTheme = theme("mode", {
-	dark: buildClicker("var(--pBase)", "var(--pText)", "var(--pLight)", "black"),
-	light: buildClicker("var(--pBase)", "var(--pBase)"),
-});
-
 
 const Toggler = styled.div`
-		${buttonTheme};
+		background-color: var(--pBase);
+		color: var(--pText);
+		cursor: pointer;
 		border-radius: 50%;
-		margin: 20px;
-		width: 50px; height: 50px;
+		margin: 10px;
+		width: 40px; 
+		height: 40px;
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: center; align-items: center;
 `;
 
 const ThemeToggler = props => {
-	const { toggle, mode } = useTheme();
+	const { toggle } = useTheme();
 
 	return (
 		<Toggler onClick={toggle}>
-			{
-				mode === "dark"
-					? (<img src={moonDark} alt="dark mode icon" style={{ height: 30 }} />)
-					: (<img src={moonLight} alt="light mode icon" style={{ height: 30 }} />)
-			}
-
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+				<g fill="none" fill-rule="evenodd">
+					<circle cx="12" cy="12" r="11.5" stroke="currentColor"></circle>
+					<path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12z"></path>
+				</g>
+			</svg>
 		</Toggler>
 	);
 }
