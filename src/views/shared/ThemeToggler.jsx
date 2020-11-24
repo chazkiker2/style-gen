@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-// import theme from "styled-theming";
+import theme from "styled-theming";
 import { useTheme } from "../../theme/ThemeContext";
-// import layout from "../layout";
+import layout from "../layout";
 import moonDark from "../../assets/moonFilled.svg";
 import moonLight from "../../assets/moon.svg";
 
-// const { buildClicker } = layout;
+const { buildClicker } = layout;
 
-// const buttonTheme = theme("mode", {
-// 	dark: buildClicker("var(--pBase)", "var(--pText)", "var(--pLight)", "black"),
-// 	light: buildClicker("var(--pBase)", "var(--pBase)"),
-// });
+const buttonTheme = theme("mode", {
+	dark: buildClicker("var(--pBase)", "var(--pText)", "var(--pLight)", "black"),
+	light: buildClicker("var(--pBase)", "var(--pBase)"),
+});
 
-/* ${buttonTheme}; */
 
 const Toggler = styled.div`
+		${buttonTheme};
 		border-radius: 50%;
 		margin: 20px;
 		width: 50px; height: 50px;
