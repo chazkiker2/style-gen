@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import layout from "../layout";
@@ -67,18 +67,22 @@ const SSwatch = styled.div`
 	h5 {
 		text-transform: uppercase;
 	}
-	div.button-container {
-		display: flex;
-		flex-flow: column nowrap;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-		Button, button {
-			margin: 0.5rem;
-			border-radius: 8px;
-			width: 50%;
-			height: 20px;
-		}
+`;
+
+const ButtonContainer = styled.div`
+	/* display: flex; */
+	display: ${props => props.shown ? "flex" : "none"};
+	flex-flow: column nowrap;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	Button, button {
+		margin: 0.5rem;
+		border-radius: 8px;
+		width: 50%;
+		height: 20px;
+		background-color: var(--pBase);
+		color: var(--pText);
 	}
 `;
 
@@ -92,13 +96,24 @@ const SCollection = styled.div`
 `;
 
 const Swatch = ({ color, ...props }) => {
+	const [hover, setHover] = useState(false);
+
+	const onMouseIn = () => {
+		setHover(true);
+	}
+	const onMouseOut = () => {
+		setHover(false);
+	}
+
+
+
 	return (
-		<SSwatch color={color}>
+		<SSwatch color={color} onMouseEnter={onMouseIn} onMouseLeave={onMouseOut}>
 			<Heading h5>{color}</Heading>
-			<div className="button-container">
+			<ButtonContainer shown={hover}>
 				<Button>Edit</Button>
 				<Button>Copy Hex</Button>
-			</div>
+			</ButtonContainer>
 		</SSwatch>
 	);
 };
