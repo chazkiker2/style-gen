@@ -1,34 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+// import assets from "../../assets";
+import Locked from "../../assets/001-unlock.svg";
+import unlocked from "../../assets/002-open-lock.svg";
+import filter from "../../assets/004-filter.svg";
+import copy from "../../assets/003-copy.svg";
 import layout from "../layout";
 
 const { Heading, Button } = layout;
-
-// const ButtonContainer = styled.div`
-// 	display: flex;
-// 	flex-flow: column nowrap;
-// 	width: 100%;
-// 	justify-content: center;
-// 	align-items: center;
-// 	Button, button {
-// 		width: 50%;
-// 		height: 20px;
-// 	}
-// `;
-
-const ColorsContainer = styled.div`
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	background-color: var(--pDark);
-	width: 80%;
-	margin: 0 auto;
-	padding: 2rem;
-	/* height: 60vh; */
-	border-radius: 20px;
-`;
 
 const darkArr = [
 	"#000000",
@@ -58,20 +37,40 @@ const themeArr2 = [
 	"#DEECF9"
 ];
 
-const SSwatch = styled.div`
-	background-color: ${pr => pr.color};
-	width: 100%;
+const ColorsContainer = styled.div`
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: var(--pDark);
+	width: 80%;
+	margin: 0 auto;
+	padding: 2rem;
+	/* height: 60vh; */
+	border-radius: 20px;
+`;
+
+const StyledSwatch = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
+	width: 100%;
+	height: 100%;
 	h5 {
 		text-transform: uppercase;
 	}
+	
+`;
+
+const ColorSwatch = styled.div`
+	background-color: ${props => props.color};
+	height: 50%;
+	width: 100%;
 `;
 
 const ButtonContainer = styled.div`
-	/* display: flex; */
-	display: ${props => props.shown ? "flex" : "none"};
+	display: flex;
+	/* display: ${props => props.shown ? "flex" : "none"}; */
 	flex-flow: column nowrap;
 	width: 100%;
 	justify-content: center;
@@ -95,6 +94,29 @@ const SCollection = styled.div`
 	justify-content: space-evenly;
 `;
 
+const Options = styled.div`
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	justify-content: space-evenly;
+	align-items: center;
+	img {
+		fill: white;
+		&:hover {
+			opacity: 1;
+		}
+	}
+`;
+
+const Icon = styled.a`
+	display: block;
+	/* background: transparent url("../../assets/001-unlock.svg") no-repeat; */
+	background: transparent url(../../assets/001-unlock.svg) no-repeat;
+	background-position: 50%;
+	background-size:  1.2em;
+	margin-right: 0;
+`;
+
 const Swatch = ({ color, ...props }) => {
 	const [hover, setHover] = useState(false);
 
@@ -105,16 +127,18 @@ const Swatch = ({ color, ...props }) => {
 		setHover(false);
 	}
 
-
-
 	return (
-		<SSwatch color={color} onMouseEnter={onMouseIn} onMouseLeave={onMouseOut}>
-			<Heading h5>{color}</Heading>
-			<ButtonContainer shown={hover}>
-				<Button>Edit</Button>
-				<Button>Copy Hex</Button>
-			</ButtonContainer>
-		</SSwatch>
+		<StyledSwatch>
+			<ColorSwatch color={color} onMouseEnter={onMouseIn} onMouseLeave={onMouseOut} />
+			<Options>
+				<h5>{color}</h5>
+				{/* <Locked /> */}
+				<Icon />
+				{/* <img src={Locked} alt="lock icon" style={{ width: 20 }} /> */}
+				<img src={copy} alt="copy icon" style={{ width: 20 }} />
+				<img src={filter} alt="filter icon" style={{ width: 20 }} />
+			</Options>
+		</StyledSwatch>
 	);
 };
 
