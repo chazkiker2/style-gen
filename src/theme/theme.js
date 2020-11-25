@@ -17,7 +17,6 @@ const buildPrimaryPallette = (arr) => {
 		--pLight: ${hex[4]};
 		--pLighter: ${hex[5]};
 		--pLightest: ${hex[6]};
-		${'' /* transition: all 0.4s linear; */}
 	`;
 };
 const buildThemePallette = (arr) => {
@@ -28,7 +27,6 @@ const buildThemePallette = (arr) => {
 		--tBase: ${hex[2]};
 		--tLight: ${hex[3]};
 		--tLighter: ${hex[4]};
-		${'' /* transition: all 0.4s linear; */}
 	`;
 };
 
