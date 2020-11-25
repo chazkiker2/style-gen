@@ -3,7 +3,19 @@ import styled from "styled-components";
 
 import layout from "../layout";
 
-const { Heading } = layout;
+const { Heading, Button } = layout;
+
+// const ButtonContainer = styled.div`
+// 	display: flex;
+// 	flex-flow: column nowrap;
+// 	width: 100%;
+// 	justify-content: center;
+// 	align-items: center;
+// 	Button, button {
+// 		width: 50%;
+// 		height: 20px;
+// 	}
+// `;
 
 const ColorsContainer = styled.div`
 	display: flex;
@@ -49,8 +61,24 @@ const themeArr2 = [
 const SSwatch = styled.div`
 	background-color: ${pr => pr.color};
 	width: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
 	h5 {
 		text-transform: uppercase;
+	}
+	div.button-container {
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		Button, button {
+			margin: 0.5rem;
+			border-radius: 8px;
+			width: 50%;
+			height: 20px;
+		}
 	}
 `;
 
@@ -67,6 +95,10 @@ const Swatch = ({ color, ...props }) => {
 	return (
 		<SSwatch color={color}>
 			<Heading h5>{color}</Heading>
+			<div className="button-container">
+				<Button>Edit</Button>
+				<Button>Copy Hex</Button>
+			</div>
 		</SSwatch>
 	);
 };
